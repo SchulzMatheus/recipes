@@ -1,18 +1,23 @@
 import React from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import LoginProvider from './context/LoginContext';
-import Login from './pages/Login';
-import Recipes from './pages/Recipes';
+import { Drinks, Login, Meals, Profile, FavoriteRecipes, DoneRecipes,
+  DrinkPage, MealPage,
+} from './pages';
 
 function App() {
   return (
     <LoginProvider>
-      <BrowserRouter>
-        <Switch>
-          <Route exact path="/" component={ Login } />
-          <Route exact path="/meals" component={ Recipes } />
-        </Switch>
-      </BrowserRouter>
+      <Switch>
+        <Route path="/" exact component={ Login } />
+        <Route path="/meals" exact component={ Meals } />
+        <Route path="/drinks" exact component={ Drinks } />
+        <Route path="/profile" exact component={ Profile } />
+        <Route path="/done-recipes" exact component={ DoneRecipes } />
+        <Route path="/favorite-recipes" exact component={ FavoriteRecipes } />
+        <Route path="/drinks/:id" exact component={ DrinkPage } />
+        <Route path="/meals/:id" exact component={ MealPage } />
+      </Switch>
     </LoginProvider>
   );
 }
